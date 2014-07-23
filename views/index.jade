@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Test de push
+  #users
+    for user in users
+      include user
+
+  #zoneVisu
+    p toto
+    canvas#beerCanva  
+
+  br
+  button#poke(type='submit') Click me
+
+  script(type="text/javascript" src='/scripts/beer.js')
+
+  include socket
+  
+
+
+
+      
