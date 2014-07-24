@@ -1,7 +1,7 @@
 
-var beerCanva = document.getElementById("beerCanva");
-var context = beerCanva.getContext("2d");
-  
+// var beerCanva = document.getElementById("beerCanva");
+// var context = beerCanva.getContext("2d");
+ 
 
 // Fond
 // context.fillStyle = "olivedrab";
@@ -17,10 +17,14 @@ var context = beerCanva.getContext("2d");
 // context.fillRect(200,100,50,50);
 
 
-var imageBeer = new Image(); 
-imageBeer.src = '/images/small_beer.jpg';
-imageBeer.onload = function() {
-  // Cette fonction est appelée lorsque l'image a été chargée
-  context.drawImage(this,150,197); // this fait référence à l'objet courant (=image)
-};
+// var imageBeer = new Image(); 
+// imageBeer.src = '/images/small_beer.jpg';
+// imageBeer.onload = function() {
+//   // Cette fonction est appelée lorsque l'image a été chargée
+//   context.drawImage(this,150,197); // this fait référence à l'objet courant (=image)
+// };
+
+console.log('appel de beer.js');
+var carre = new RandomCarre('beerCanva');
+carre.dessineCarre();
 
