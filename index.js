@@ -32,6 +32,7 @@ io.sockets.on('connection', function (socket) {
     console.log('Un client est connecté !');
 
     //socket.emit('message', 'Vous êtes bien connecté !');
+	//on broadcast pour tout le monde
     socket.broadcast.emit('message', 'Un autre client vient de se connecter !');
 
     // Quand le serveur reçoit un signal de type "message" du client    
