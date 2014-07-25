@@ -25,6 +25,6 @@
 // };
 
 console.log('appel de beer.js');
-var carre = new RandomCarre('beerCanva');
-carre.dessineCarre();
+// var carre = new RandomCarre('beerCanva');
+// carre.dessineCarre();
 

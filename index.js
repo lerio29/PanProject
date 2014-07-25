@@ -31,13 +31,15 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
     console.log('Un client est connecté !');
 
-    //socket.emit('message', 'Vous êtes bien connecté !');
+    socket.emit('message', 'Vous êtes bien connecté !');
 	//on broadcast pour tout le monde
     socket.broadcast.emit('message', 'Un autre client vient de se connecter !');
 
     // Quand le serveur reçoit un signal de type "message" du client    
     socket.on('message', function (message) {
         console.log('Un client me parle ! Il me dit : ' + message);
+        //TODO remplacer par des broadcast + timing 5s
+        socket.emit('dessine', 'dessine!');
 
     }); 
 
