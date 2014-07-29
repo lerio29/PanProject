@@ -1,19 +1,14 @@
 extends layout
 
 block content
-  h1 Test de push
-  #users
-    for user in users
-      include user
+  h1 Test de push  
 
   #zoneVisu
     p toto
-    canvas#beerCanva  
+    canvas(width='500px', height='300px')#beerCanva  
 
   br
   button#poke(type='submit') Click me
-
-  
 
   include socket
   

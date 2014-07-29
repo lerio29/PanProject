@@ -18,14 +18,12 @@ body{
 
 canvas{
 	border:1px dotted red;
-
-	width: 600px;
-	height: 600px;
+	margin:10px;
+	
 }
 
 canvas#beerCanva{
-	width: 600px;
-	height: 600px;
+	
 }
 
 footer#mainFooter{

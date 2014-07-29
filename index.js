@@ -11,45 +11,56 @@ app.set('view engine', 'jade');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-function User(name, email) {
-  this.name = name;
-  this.email = email;
-}
 
-// Dummy users
-var users = [
-    new User('tj', 'tj@vision-media.ca')
-  , new User('ciaran', 'ciaranj@gmail.com')
-  , new User('aaron', 'aaron.heckmann+github@gmail.com')
-];
 
 
 // Chargement de socket.io
 var io = require('socket.io').listen(server);
 
+
+function timeToDraw(socket){
+  var counter = 0
+  var interval = setInterval( function() {
+
+    //TODO ajouter generation des coordonnees des points pour envoyer aux clients
+
+    socket.emit('dessine', 'dessine!');
+    counter++;
+    console.log('nombre de passage : ' + counter);
+     
+  }, 100);
+
+}
+
+
+
+
 // Quand un client se connecte, on le note dans la console
 io.sockets.on('connection', function (socket) {
-    console.log('Un client est connecté !');
 
-    socket.emit('message', 'Vous êtes bien connecté !');
-	//on broadcast pour tout le monde
-    socket.broadcast.emit('message', 'Un autre client vient de se connecter !');
+  console.log('Un client est connecté !');
 
-    // Quand le serveur reçoit un signal de type "message" du client    
-    socket.on('message', function (message) {
-        console.log('Un client me parle ! Il me dit : ' + message);
-        //TODO remplacer par des broadcast + timing 5s
-        socket.emit('dessine', 'dessine!');
+  // socket.emit('message', 'Vous êtes bien connecté !');
+  //on broadcast pour tout le monde
+  socket.broadcast.emit('message', 'Un autre client vient de se connecter !');
 
-    }); 
+  // Quand le serveur reçoit un signal de type "message" du client    
+  socket.on('message', function (message) {
+    console.log('Un client me parle ! Il me dit : ' + message);
+  }); 
+
+  // socket.on('dessine', function (dessine) {        
+  //   socket.emit('dessine', 'dessine!');
+  // }); 
+
+  timeToDraw(socket);
 
 });
 
 
 
-
 app.get('/', function(req, res) {
-     res.render('index.jade', { users: users });
+     res.render('index.jade');
 });
 
 app.get('/sous-sol', function(req, res) {
