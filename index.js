@@ -63,6 +63,10 @@ app.get('/', function(req, res) {
      res.render('index.jade');
 });
 
+app.get('/boot', function(req, res) {
+     res.render('boot.jade');
+});
+
 app.get('/sous-sol', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Vous êtes dans la cave à vins, ces bouteilles sont à moi !');
