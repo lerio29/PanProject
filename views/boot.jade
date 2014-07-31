@@ -2,6 +2,36 @@ extends bootLayout
 
 block content   
   h1 Hello, world!
+
+  div(ng-controller='MainCtrl')
+    h1 {{title}}
+    input(type='text', ng-model='name', placeholder='Votre nom')
+    p Bonjour {{name}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // jQuery (necessary for Bootstrap's JavaScript plugins) 
   script(type="text/javascript" src='/scripts/jquery-2.1.1.min.js')
   // Include all compiled plugins (below), or include individual files as needed 
