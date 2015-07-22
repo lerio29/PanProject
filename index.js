@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var cradle = require('cradle');
 
 var app = express();
 var server = app.listen(8080);
@@ -12,6 +13,39 @@ app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+var connection = new(cradle.Connection)('http://localhost', 5984, {
+      cache: true,
+      raw: false,
+      forceSave: true
+  }
+);
+
+var db = connection.database('portfolio');
+  
+  //db.save('skywalker', {
+      //force: 'light',
+      //name: 'Luke Skywalker'
+  //}, function (err, res) {
+      //if (err) {
+          //console.log('error', err);
+      //} else {
+          //console.log('success', 'success');
+      //}
+  //});
+//db.exists(function (err, exists) {
+	//if (err) {
+		//console.log('error', err);
+	//} else if (exists) {
+			//console.log('the force is with you.');
+			//db.get('portfolio', function (err, doc) {
+			//console.log(doc);
+		//});
+	//} else {
+		//console.log('database does not exists.');
+
+	///* populate design documents */
+	//}
+//});
 
 
 // Chargement de socket.io
@@ -31,6 +65,11 @@ function timeToDraw(socket){
   }, 100);
 
 }
+
+
+
+ 
+
 
 
 
@@ -80,7 +119,7 @@ app.get('/etage/1/chambre', function(req, res) {
 
 app.use(function(req, res, next){
     res.setHeader('Content-Type', 'text/plain');
-    res.send(404, 'Page introuvable !');
+    res.status(404).send('Page introuvable !');
 });
 
 
