@@ -1,4 +1,4 @@
 PanProject
 ==========
 
-test nodejs socket
+test nodejs socket et angular

@@ -23,7 +23,9 @@
     "gulp-uglify": "~1.2.0",
     "gulp-sass": "~2.0.4",
     "gulp-browatchify": "0.0.0",
-    "gulp": "~3.9.0"
+    "gulp": "~3.9.0",
+    "gulp-git": "~1.2.4",
+    "sass": "~0.5.0"
   },
   "scripts": {
     "test": "mocha"
@@ -41,5 +43,8 @@
   "license": "Creative Commons BY-NC-SA",
   "bugs": {
     "url": "https://github.com/lerio29/PanProject/issues"
-  }
+  },
+ "browser": {
+  "angular-latest" : "./vendors/angular.browserify.js"
+ }
 }
